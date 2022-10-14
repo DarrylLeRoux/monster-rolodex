@@ -7,7 +7,7 @@ class App extends Component {
     super();
 
     this.state = {
-      name: "Darryl",
+      name: "Yihua",
       company: "ZTM",
     };
   }
@@ -24,7 +24,10 @@ class App extends Component {
             onClick={() => {
               // Set a new Object for React to change
               // Otherwise it will point to the same object and not change
-              this.setState({ name: "Andrei", company: "Clear View" });
+              this.setState({
+                name: "Andrei",
+                company: `ZTM as Well as ${this.state.name}`,
+              });
             }}
           >
             Change Name
