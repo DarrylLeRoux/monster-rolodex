@@ -18,7 +18,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hi {this.state.name}, I work at {this.state.company}
+            Hi, I am {this.state.name}, and I work at {this.state.company}
           </p>
           <button
             onClick={() => {
@@ -26,7 +26,7 @@ class App extends Component {
               // Otherwise it will point to the same object and not change
               this.setState({
                 name: "Andrei",
-                company: `ZTM as Well as ${this.state.name}`,
+                company: `ZTM with ${this.state.name}`,
               });
             }}
           >
