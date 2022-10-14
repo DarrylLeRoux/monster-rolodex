@@ -18,7 +18,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hi, I am {this.state.name}, and I work at {this.state.company}
+            Hi, I am {this.state.name} and I work at {this.state.company}
           </p>
           <button
             onClick={() => {
