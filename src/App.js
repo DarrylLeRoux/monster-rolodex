@@ -17,6 +17,9 @@ class App extends Component {
         {
           name: "Jack",
         },
+        {
+          name: "Andrei",
+        },
       ],
     };
   }
@@ -51,6 +54,7 @@ class App extends Component {
           </button>
         </header> */}
 
+        {/* // enter into js with {} */}
         {this.state.monsters.map((monster) => {
           return <h1>{monster.name}</h1>;
         })}
