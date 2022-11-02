@@ -24,9 +24,11 @@ class App extends Component {
             onClick={() => {
               // Set a new Object for React to change
               // Otherwise it will point to the same object and not change
-              this.setState({
-                name: "Andrei",
-                company: `ZTM with ${this.state.name}`,
+              this.setState(() => {
+                return {
+                  name: "Andrei",
+                  company: `ZTM with ${this.state.name}`,
+                };
               });
             }}
           >
