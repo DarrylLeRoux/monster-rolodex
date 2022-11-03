@@ -27,6 +27,7 @@ class App extends Component {
               () => {
                 return { monsters: users };
               },
+              // use second callback to ensure that state has changed
               () => {
                 console.log(this.state);
               }
