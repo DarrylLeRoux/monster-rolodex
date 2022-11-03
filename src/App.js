@@ -12,7 +12,7 @@ class App extends Component {
     };
   }
 
-  // first time a component (This is the APP component) gets rendered to the DOM
+  // first time a class component (This is the APP component) gets rendered to the DOM
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
       // receive a response from the API
