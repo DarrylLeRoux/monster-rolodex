@@ -14,18 +14,25 @@ class App extends Component {
 
   // first time a component (This is the APP component) gets rendered to the DOM
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users").then((response) =>
-      response.json().then((users) =>
-        this.setState(
-          () => {
-            return { monsters: users };
-          },
-          () => {
-            console.log(this.state);
-          }
-        )
-      )
-    );
+    fetch("https://jsonplaceholder.typicode.com/users")
+      // receive a response from the API
+      .then((response) =>
+        //convert the response into JSON
+        response
+          .json()
+          // pass whatever is retrived into a variable you can name - whatever name you pick
+          .then((users) =>
+            // set the new state
+            this.setState(
+              () => {
+                return { monsters: users };
+              },
+              () => {
+                console.log(this.state);
+              }
+            )
+          )
+      );
   }
 
   render() {
