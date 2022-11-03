@@ -7,8 +7,25 @@ class App extends Component {
     super();
 
     this.state = {
+      // initialise state to an empty array
       monsters: [],
     };
+  }
+
+  // first time a component (This is the APP component) gets rendered to the DOM
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users").then((response) =>
+      response.json().then((users) =>
+        this.setState(
+          () => {
+            return { monsters: users };
+          },
+          () => {
+            console.log(this.state);
+          }
+        )
+      )
+    );
   }
 
   render() {
