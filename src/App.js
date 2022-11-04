@@ -41,6 +41,11 @@ class App extends Component {
     console.log("render");
     return (
       <div className="App">
+        <input
+          className="search-box"
+          type="search"
+          placeholder="Search Monsters"
+        />
         {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
