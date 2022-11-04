@@ -1,5 +1,4 @@
 import { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
@@ -10,10 +9,12 @@ class App extends Component {
       // initialise state to an empty array
       monsters: [],
     };
+    console.log("component");
   }
 
   // first time a class component (This is the APP component) gets rendered to the DOM
   componentDidMount() {
+    console.log("componentDidMount");
     fetch("https://jsonplaceholder.typicode.com/users")
       // receive a response from the API
       .then((response) =>
@@ -37,6 +38,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("render");
     return (
       <div className="App">
         {/* <header className="App-header">
