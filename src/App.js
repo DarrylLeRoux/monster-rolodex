@@ -1,5 +1,5 @@
-import { Component } from "react";
-import "./App.css";
+import { Component } from 'react';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -8,83 +8,50 @@ class App extends Component {
     this.state = {
       // initialise state to an empty array
       monsters: [],
-      searchField: "",
+      searchField: '',
     };
-    console.log("component");
+    console.log('constructor()');
   }
 
-  // first time a class component (This is the APP component) gets rendered to the DOM
   componentDidMount() {
-    console.log("componentDidMount");
-    fetch("https://jsonplaceholder.typicode.com/users")
-      // receive a response from the API
-      .then((response) =>
-        //convert the response into JSON
-        response
-          .json()
-          // pass whatever is retrived into a variable you can name - whatever name you pick
-          .then((users) =>
-            // set the new state
-            this.setState(
-              () => {
-                return { monsters: users };
-              },
-              // use second callback to ensure that state has changed
-              () => {
-                console.log(this.state);
-              }
-            )
-          )
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((users) =>
+        this.setState(() => {
+          return { monsters: users };
+        })
       );
+    console.log('componentdidmount()');
   }
 
   render() {
-    console.log("render");
+    console.log('render');
+    const filteredMonsters = this.state.monsters.filter(
+      (monster) => {
+        return monster.name
+          .toLocaleLowerCase()
+          .includes(this.state.searchField);
+      }
+    );
 
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLowerCase().includes(this.state.searchField);
-    });
     return (
-      <div className="App">
+      <div className='App'>
         <input
-          className="search-box"
-          type="search"
-          placeholder="Search Monsters"
-          onChange={(event) => {
-            const searchField = event.target.value.toLowerCase();
+          className='search-box'
+          type='search'
+          placeholder='search monsters'
+          onChange={(e) => {
+            const searchField =
+              e.target.value.toLocaleLowerCase();
+
             this.setState(() => {
-              return { searchField };
+              return {
+                searchField,
+              };
             });
           }}
         />
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Hi, I am {this.state.name} and I work at {this.state.company}
-          </p>
-          <button
-            onClick={() => {
-              // Set a new Object for React to change
-              // Otherwise it will point to the same object and not change
-              this.setState(
-                () => {
-                  return {
-                    name: "Andrei",
-                    company: `ZTM with ${this.state.name}`,
-                  };
-                },
-                // second function passed to setState( , second) will only run once the first has been executed, and therefore update the state for the console.log
-                () => {
-                  console.log(this.state);
-                }
-              );
-            }}
-          >
-            Change Name
-          </button>
-        </header> */}
 
-        {/* // enter into js with {} */}
         {filteredMonsters.map((monster) => {
           return (
             <div key={monster.id}>
